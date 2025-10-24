@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 type ImgItem = {
   id: string;
@@ -8,7 +9,7 @@ type ImgItem = {
   isObjectUrl?: boolean;
 };
 
-export default function GalleryWidget(): JSX.Element {
+export default function GalleryWidget(): React.JSX.Element {
   const initial: ImgItem[] = [
     { id: 'p1', src: '/placeholder1.jpg' },
     { id: 'p2', src: '/placeholder2.jpg' },
@@ -20,7 +21,7 @@ export default function GalleryWidget(): JSX.Element {
   const stripRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    
+    // cleanup object URLs on component unmount
     return () => {
       images.forEach(img => {
         if (img.isObjectUrl) {
@@ -28,7 +29,7 @@ export default function GalleryWidget(): JSX.Element {
         }
       });
     };
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleAddClick() {
@@ -79,6 +80,8 @@ export default function GalleryWidget(): JSX.Element {
         multiple
         onChange={onFiles}
         className="hidden"
+        title="Add images to gallery"
+        placeholder="Select images"
       />
 
       <div
@@ -88,9 +91,9 @@ export default function GalleryWidget(): JSX.Element {
       >
         <div className="inline-flex gap-4 pr-6">
           {images.map((img) => (
-            <div key={img.id} className="w-40 h-28 bg-gray-800 flex-shrink-0 rounded-xl overflow-hidden">
+            <div key={img.id} className="w-40 h-28 bg-gray-800 shrink-0 rounded-xl overflow-hidden">
               {/* Next/Image could be used, but object URLs and /public static images are fine with <img> */}
-              <img src={img.src} alt={img.name ?? 'gallery image'} className="w-full h-full object-cover thumb" />
+              <Image src={img.src} alt={img.name ?? 'gallery image'} className="w-full h-full object-cover thumb" />
             </div>
           ))}
         </div>

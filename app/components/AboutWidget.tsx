@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import type { JSX } from 'react';
 import Tab from './Tab';
 
 const TABS = ['About Me', 'Experiences', 'Recommended'] as const;
@@ -22,7 +23,7 @@ export default function AboutWidget(): JSX.Element {
         ))}
       </div>
 
-      <div className="bg-[color:var(--card)] p-5 rounded-xl shadow-neumo">
+      <div className="bg-[--card] p-5 rounded-xl shadow-neumo">
         <div className="text-sm text-gray-300 leading-relaxed whitespace-pre-line">
           {CONTENT[active]}
         </div>

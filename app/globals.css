@@ -20,7 +20,7 @@
   --radius-xl: 14px;
 }
 
-@theme inline {
+:root[data-theme="inline"] {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -72,8 +72,9 @@ body {
   gap: 8px;
   border: 1px solid rgba(255,255,255,0.02);
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
-  font-size: 0.875rem; /* text-sm */
+  font-size: 0.875rem; 
 }
 
 .tab-active {
