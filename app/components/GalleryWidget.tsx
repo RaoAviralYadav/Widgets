@@ -91,9 +91,17 @@ export default function GalleryWidget(): React.JSX.Element {
       >
         <div className="inline-flex gap-4 pr-6">
           {images.map((img) => (
-            <div key={img.id} className="w-40 h-28 bg-gray-800 shrink-0 rounded-xl overflow-hidden">
-              {/* Next/Image could be used, but object URLs and /public static images are fine with <img> */}
-              <Image src={img.src} alt={img.name ?? 'gallery image'} className="w-full h-full object-cover thumb" />
+            <div 
+              key={img.id} 
+              className="relative w-40 h-28 bg-gray-800 shrink-0 rounded-xl overflow-hidden" 
+            >
+              
+              <Image 
+                src={img.src} 
+                alt={img.name ?? 'gallery image'} 
+                layout="fill" 
+                className="object-cover thumb" 
+              />
             </div>
           ))}
         </div>
