@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  
+  --ui-bg: #14171a;            
+  --card: #2a3136;             
+  --card-soft: #1b1f22;
+  --pill-top: rgba(255,255,255,0.02);
+  --pill-bottom: rgba(0,0,0,0.25);
+
+  
+  --shadow-dark: 10px 10px 20px rgba(0,0,0,0.7);
+  --shadow-light: -6px -6px 14px rgba(255,255,255,0.02);
+
+  
+  --radius-xl: 14px;
 }
 
 @theme inline {
@@ -16,11 +31,99 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    
+    --ui-bg: #0f1113;
+    --card: #23282b;
+    --card-soft: #1b1f22;
+    --pill-top: rgba(255,255,255,0.02);
+    --pill-bottom: rgba(0,0,0,0.25);
+    --shadow-dark: 10px 10px 20px rgba(0,0,0,0.7);
+    --shadow-light: -6px -6px 14px rgba(255,255,255,0.02);
   }
+}
+
+html, body, #__next {
+  height: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+}
+
+.neumo-card {
+  background: linear-gradient(180deg, var(--pill-top), rgba(0,0,0,0.12));
+  box-shadow: var(--shadow-dark), var(--shadow-light);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.tab-pill {
+  background: linear-gradient(180deg, var(--pill-top), var(--pill-bottom));
+  padding: 8px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.02);
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.tab-active {
+  background: linear-gradient(180deg, #1f2326, #0f1011);
+  color: #ffffff;
+  box-shadow: inset 0 -2px 8px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.card-inner-hr {
+  height: 4px;
+  background: rgba(0,0,0,0.18);
+  border-radius: 999px;
+}
+
+.widget-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.widget-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+}
+
+.thumb {
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: 1fr min(780px, 45%);
+  gap: 24px;
+  padding: 32px;
+}
+
+.shadow-neumo {
+  box-shadow: 6px 6px 16px rgba(0,0,0,0.5), -4px -4px 10px rgba(255,255,255,0.02);
+}
+
+@media (max-width: 767px) {
+  .container-grid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .container-grid > .hidden-md {
+    display: none;
+  }
 }
