@@ -90,7 +90,7 @@ export default function AboutWidget() {
       <div className="widget-content">
         
         <div className="tab-background" role="tablist" aria-label="profile tabs">
-          <div className="tab-container" aria-hidden={false}>
+          <div className="tab-container">
             {TABS.map((tab) => (
               <button
                 key={tab}
@@ -113,3 +113,5 @@ export default function AboutWidget() {
     </div>
   );
 }
+
+
